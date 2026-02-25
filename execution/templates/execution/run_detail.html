@@ -1,0 +1,10 @@
+{% extends 'execution/layout.html' %}
+
+{% block body %}
+<h1>Pipeline Run {{ run.id }}</h1>
+<p>Status: {{ run.status }}</p>
+<p>Work directory: {{ run.work_dir }}</p>
+<p>Created at: {{ run.created_at }}</p>
+<p>Started at: {{ run.started_at }}</p>
+<p>Finished at: {{ run.finished_at }}</p>
+{% endblock %}

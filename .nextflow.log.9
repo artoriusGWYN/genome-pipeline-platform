@@ -1,0 +1,381 @@
+Feb-24 15:40:53.609 [main] DEBUG nextflow.cli.Launcher - $> nextflow run nf-core/bacass -r 2.5.0 -profile test --params-file /home/vy/coding/web_dev/genome_pipeline_platfrom/runs/24/params.json
+Feb-24 15:40:53.690 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.7
+Feb-24 15:40:53.710 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/vy/.nextflow/plugins; core-plugins: nf-amazon@2.15.0-patch1,nf-azure@1.16.0-patch1,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.1,nf-k8s@1.0.0,nf-tower@1.11.4-patch1,nf-wave@1.12.1
+Feb-24 15:40:53.734 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Feb-24 15:40:53.735 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Feb-24 15:40:53.738 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Feb-24 15:40:53.751 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Feb-24 15:40:53.762 [main] DEBUG nextflow.scm.ProviderConfig - Using SCM config path: /home/vy/.nextflow/scm
+Feb-24 15:40:54.301 [main] DEBUG nextflow.scm.AssetManager - Git config: /home/vy/.nextflow/assets/nf-core/bacass/.git/config; branch: main; remote: origin; url: https://github.com/nf-core/bacass.git
+Feb-24 15:40:54.321 [main] DEBUG nextflow.scm.RepositoryFactory - Found Git repository result: [RepositoryFactory]
+Feb-24 15:40:54.325 [main] DEBUG nextflow.scm.AssetManager - Git config: /home/vy/.nextflow/assets/nf-core/bacass/.git/config; branch: main; remote: origin; url: https://github.com/nf-core/bacass.git
+Feb-24 15:40:55.017 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /home/vy/.nextflow/assets/nf-core/bacass/nextflow.config
+Feb-24 15:40:55.020 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/vy/.nextflow/assets/nf-core/bacass/nextflow.config
+Feb-24 15:40:55.027 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/vy/.nextflow/secrets/store.json
+Feb-24 15:40:55.029 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@4e375bba] - activable => nextflow.secret.LocalSecretsProvider@4e375bba
+Feb-24 15:40:55.037 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `test`
+Feb-24 15:40:55.911 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [bih, cfc_dev, uzl_omics, ifb_core, embl_hd, denbi_qbic, alice, mjolnir_globe, uppmax, giga, incliva, ilifu, ki_luria, uge, icr_alma, rosalind_uge, lugh, mccleary, unibe_ibu, vai, czbiohub_aws, jax, roslin, iris, tes, scw, unc_longleaf, tigem, tubingen_apg, apollo, ipop_up, vsc_calcua, pdc_kth, ceci_nic5, ccga_cau, humantechnopole, stjude, daisybio, eddie, medair, biowulf, apptainer, bi, bigpurple, adcra, cedars, pawsey_setonix, vsc_kul_uhasselt, pawsey_nimbus, rki, ucl_myriad, utd_ganymede, charliecloud, fred_hutch, seattlechildrens, icr_davros, ceres, arm, test_dfast, munin, rosalind, hasta, cfc, uzh, shu_bmrc, ebi_codon_slurm, ebc, ccga_dx, test_hybrid, crick, ku_sund_danhead, marvin, lrz_cm4, shifter, biohpc_gen, mana, mamba, york_viking, unc_lccc, wehi, awsbatch, wustl_htcf, arcc, ceci_dragon2, imperial, maestro, software_license, cannon, genotoul, nci_gadi, abims, eva_grace, test_long_dragonflye, janelia, nu_genomics, googlebatch, oist, sahmri, kaust, alliance_canada, mpcdf, leicester, vsc_ugent, create, sage, cambridge, jex, podman, ebi_codon, cheaha, xanadu, nyu_hpc, test, marjorie, test_long, computerome, ucd_sonic, gpu, seg_globe, mssm, sanger, dkfz, bluebear, test_long_miniasm_prokka, pasteur, einstein, ethz_euler, m3c, test_liftoff, test_full, imb, ucl_cscluster, tuos_stanage, azurebatch, seadragon, crukmi, csiro_petrichor, qmul_apocrita, wave, docker, engaging, gis, hypatia, psmn, eva, unity, cropdiversityhpc, nygc, fgcz, conda, crg, singularity, mpcdf_viper, pe2, dirac, self_hosted_runner, tufts, uw_hyak_pedslabs, binac2, debug, test_hybrid_dragonflye, hki_genie, test_long_miniasm, genouest, cbe, unsw_katana, utd_juno, gitpod, phoenix, seawulf, uod_hpc, fub_curta, lovelace, uct_hpc, aws_tower, binac, fsu_draco]
+Feb-24 15:40:55.935 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Feb-24 15:40:55.936 [main] DEBUG nextflow.cli.CmdRun - Launching `https://github.com/nf-core/bacass` [marvelous_marconi] DSL2 - revision: 76e4b12cac [2.5.0]
+Feb-24 15:40:55.937 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins declared=[nf-schema@2.4.2]
+Feb-24 15:40:55.937 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Feb-24 15:40:55.937 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[nf-schema@2.4.2]
+Feb-24 15:40:55.938 [main] DEBUG nextflow.plugin.PluginUpdater - Installing plugin nf-schema version: 2.4.2
+Feb-24 15:40:55.945 [main] INFO  org.pf4j.AbstractPluginManager - Plugin 'nf-schema@2.4.2' resolved
+Feb-24 15:40:55.945 [main] INFO  org.pf4j.AbstractPluginManager - Start plugin 'nf-schema@2.4.2'
+Feb-24 15:40:55.948 [main] DEBUG nextflow.plugin.BasePlugin - Plugin started nf-schema@2.4.2
+Feb-24 15:40:56.001 [main] DEBUG nextflow.Session - Session UUID: 0e53537e-6590-43ca-8db8-39511edbe922
+Feb-24 15:40:56.002 [main] DEBUG nextflow.Session - Run name: marvelous_marconi
+Feb-24 15:40:56.002 [main] DEBUG nextflow.Session - Executor pool size: 14
+Feb-24 15:40:56.007 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Feb-24 15:40:56.010 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=42; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Feb-24 15:40:56.020 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.04.7 build 5955
+  Created: 08-09-2025 13:29 UTC 
+  System: Linux 6.8.0-100-generic
+  Runtime: Groovy 4.0.26 on OpenJDK 64-Bit Server VM 17.0.18+8-Ubuntu-122.04.1
+  Encoding: UTF-8 (UTF-8)
+  Process: 300143@Vy [127.0.1.1]
+  CPUs: 14 - Mem: 15.1 GB (278.2 MB) - Swap: 0 (0)
+Feb-24 15:40:56.030 [main] DEBUG nextflow.Session - Work-dir: /home/vy/coding/web_dev/genome_pipeline_platfrom/work [ext2/ext3]
+Feb-24 15:40:56.050 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Feb-24 15:40:56.057 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Feb-24 15:40:56.071 [main] DEBUG nextflow.Session - Observer factory: ValidationObserverFactory
+Feb-24 15:40:56.074 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Feb-24 15:40:56.096 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Feb-24 15:40:56.102 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 15; maxThreads: 1000
+Feb-24 15:40:56.140 [main] DEBUG nextflow.Session - Session start
+Feb-24 15:40:56.142 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /home/vy/coding/web_dev/genome_pipeline_platfrom/null/pipeline_info/execution_trace_2026-02-24_15-40-55.txt
+Feb-24 15:40:56.147 [main] DEBUG n.validation.config.ValidationConfig - Set `validation.monochromeLogs` to false
+Feb-24 15:40:56.149 [main] DEBUG n.validation.config.ValidationConfig - Added the following parameters to the ignored parameters: [genomes]
+Feb-24 15:40:56.150 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.enabled` to true
+Feb-24 15:40:56.151 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.showHiddenParameter` to show_hidden
+Feb-24 15:40:56.151 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.showHidden` to false (Due to --show_hidden)
+Feb-24 15:40:56.151 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.fullParameter` to help_full
+Feb-24 15:40:56.157 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.beforeText` to 
+------------------------------------------------------
+                                        ,--./,-.
+        ___     __   __   __   ___     /,-._.--~'
+  |\ | |__  __ /  ` /  \ |__) |__         }  {
+  | \| |       \__, \__/ |  \ |___     \`-._,-`-,
+                                        `._,._,'
+  nf-core/bacass 2.5.0
+------------------------------------------------------
+
+Feb-24 15:40:56.158 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.afterText` to 
+* The pipeline
+    https://doi.org/10.5281/zenodo.2669428
+
+* The nf-core framework
+    https://doi.org/10.1038/s41587-020-0439-x
+
+* Software dependencies
+    https://github.com/nf-core/bacass/blob/main/CITATIONS.md
+
+Feb-24 15:40:56.159 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.command` to nextflow run nf-core/bacass -profile <docker/singularity/.../institute> --input samplesheet.csv --outdir <OUTDIR>
+Feb-24 15:40:56.161 [main] DEBUG n.validation.config.SummaryConfig - Set `validation.summary.beforeText` to 
+------------------------------------------------------
+                                        ,--./,-.
+        ___     __   __   __   ___     /,-._.--~'
+  |\ | |__  __ /  ` /  \ |__) |__         }  {
+  | \| |       \__, \__/ |  \ |___     \`-._,-`-,
+                                        `._,._,'
+  nf-core/bacass 2.5.0
+------------------------------------------------------
+
+Feb-24 15:40:56.161 [main] DEBUG n.validation.config.SummaryConfig - Set `validation.summary.afterText` to 
+* The pipeline
+    https://doi.org/10.5281/zenodo.2669428
+
+* The nf-core framework
+    https://doi.org/10.1038/s41587-020-0439-x
+
+* Software dependencies
+    https://github.com/nf-core/bacass/blob/main/CITATIONS.md
+
+Feb-24 15:40:56.240 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Feb-24 15:40:58.307 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryMap:paramsSummaryMap]; plugin Id: nf-schema
+Feb-24 15:40:58.311 [main] DEBUG n.validation.config.ValidationConfig - Set `validation.monochromeLogs` to false
+Feb-24 15:40:58.311 [main] DEBUG n.validation.config.ValidationConfig - Added the following parameters to the ignored parameters: [genomes]
+Feb-24 15:40:58.311 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.enabled` to true
+Feb-24 15:40:58.311 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.showHiddenParameter` to show_hidden
+Feb-24 15:40:58.311 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.showHidden` to false (Due to --show_hidden)
+Feb-24 15:40:58.312 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.fullParameter` to help_full
+Feb-24 15:40:58.312 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.beforeText` to 
+------------------------------------------------------
+                                        ,--./,-.
+        ___     __   __   __   ___     /,-._.--~'
+  |\ | |__  __ /  ` /  \ |__) |__         }  {
+  | \| |       \__, \__/ |  \ |___     \`-._,-`-,
+                                        `._,._,'
+  nf-core/bacass 2.5.0
+------------------------------------------------------
+
+Feb-24 15:40:58.312 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.afterText` to 
+* The pipeline
+    https://doi.org/10.5281/zenodo.2669428
+
+* The nf-core framework
+    https://doi.org/10.1038/s41587-020-0439-x
+
+* Software dependencies
+    https://github.com/nf-core/bacass/blob/main/CITATIONS.md
+
+Feb-24 15:40:58.312 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.command` to nextflow run nf-core/bacass -profile <docker/singularity/.../institute> --input samplesheet.csv --outdir <OUTDIR>
+Feb-24 15:40:58.313 [main] DEBUG n.validation.config.SummaryConfig - Set `validation.summary.beforeText` to 
+------------------------------------------------------
+                                        ,--./,-.
+        ___     __   __   __   ___     /,-._.--~'
+  |\ | |__  __ /  ` /  \ |__) |__         }  {
+  | \| |       \__, \__/ |  \ |___     \`-._,-`-,
+                                        `._,._,'
+  nf-core/bacass 2.5.0
+------------------------------------------------------
+
+Feb-24 15:40:58.313 [main] DEBUG n.validation.config.SummaryConfig - Set `validation.summary.afterText` to 
+* The pipeline
+    https://doi.org/10.5281/zenodo.2669428
+
+* The nf-core framework
+    https://doi.org/10.1038/s41587-020-0439-x
+
+* Software dependencies
+    https://github.com/nf-core/bacass/blob/main/CITATIONS.md
+
+Feb-24 15:40:58.499 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryLog:paramsSummaryLog]; plugin Id: nf-schema
+Feb-24 15:40:58.500 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [validateParameters:validateParameters]; plugin Id: nf-schema
+Feb-24 15:40:58.501 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryMap:paramsSummaryMap]; plugin Id: nf-schema
+Feb-24 15:40:58.502 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [samplesheetToList:samplesheetToList]; plugin Id: nf-schema
+Feb-24 15:40:58.851 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryLog:paramsSummaryLog]; plugin Id: nf-schema
+Feb-24 15:40:58.852 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [validateParameters:validateParameters]; plugin Id: nf-schema
+Feb-24 15:40:58.853 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryMap:paramsSummaryMap]; plugin Id: nf-schema
+Feb-24 15:40:58.854 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [samplesheetToList:samplesheetToList]; plugin Id: nf-schema
+Feb-24 15:40:58.981 [main] INFO  nextflow.Nextflow - 
+------------------------------------------------------
+                                        ,--./,-.
+        ___     __   __   __   ___     /,-._.--~'
+  |\ | |__  __ /  ` /  \ |__) |__         }  {
+  | \| |       \__, \__/ |  \ |___     \`-._,-`-,
+                                        `._,._,'
+  nf-core/bacass 2.5.0
+------------------------------------------------------
+[1mInput/output options[0m
+  [0;34minput                     : [0;32mhttps://raw.githubusercontent.com/nf-core/test-datasets/bacass/bacass_short_reseq.tsv[0m
+
+[1mAssembly parameters[0m
+  [0;34massembly_type             : [0;32mshort[0m
+  [0;34mcanu_mode                 : [0;32m-nanopore[0m
+
+[1mAnnotation[0m
+  [0;34mprokka_args               : [0;32m --fast[0m
+  [0;34mdfast_config              : [0;32m/home/vy/.nextflow/assets/nf-core/bacass/assets/test_config_dfast.py[0m
+
+[1mSkipping Options[0m
+  [0;34mskip_kraken2              : [0;32mtrue[0m
+  [0;34mskip_kmerfinder           : [0;32mtrue[0m
+  [0;34mskip_pycoqc               : [0;32mtrue[0m
+
+[1mInstitutional config options[0m
+  [0;34mconfig_profile_name       : [0;32mTest profile[0m
+  [0;34mconfig_profile_description: [0;32mMinimal test dataset to check pipeline function[0m
+
+[1mGeneric options[0m
+  [0;34mtrace_report_suffix       : [0;32m2026-02-24_15-40-55[0m
+
+[1mCore Nextflow options[0m
+  [0;34mrevision                  : [0;32m2.5.0[0m
+  [0;34mrunName                   : [0;32mmarvelous_marconi[0m
+  [0;34mlaunchDir                 : [0;32m/home/vy/coding/web_dev/genome_pipeline_platfrom[0m
+  [0;34mworkDir                   : [0;32m/home/vy/coding/web_dev/genome_pipeline_platfrom/work[0m
+  [0;34mprojectDir                : [0;32m/home/vy/.nextflow/assets/nf-core/bacass[0m
+  [0;34muserName                  : [0;32mvy[0m
+  [0;34mprofile                   : [0;32mtest[0m
+  [0;34mconfigFiles               : [0;32m/home/vy/.nextflow/assets/nf-core/bacass/nextflow.config[0m
+
+!! Only displaying parameters that differ from the pipeline defaults !!
+-[2m----------------------------------------------------[0m-
+* The pipeline
+    https://doi.org/10.5281/zenodo.2669428
+
+* The nf-core framework
+    https://doi.org/10.1038/s41587-020-0439-x
+
+* Software dependencies
+    https://github.com/nf-core/bacass/blob/main/CITATIONS.md
+
+Feb-24 15:40:58.986 [main] DEBUG n.v.parameters.ParameterValidator - Starting parameters validation
+Feb-24 15:40:59.173 [main] DEBUG n.v.v.evaluators.SchemaEvaluator - Started validating /nf-core/test-datasets/bacass/bacass_short_reseq.tsv
+Feb-24 15:40:59.319 [main] DEBUG n.v.v.evaluators.SchemaEvaluator - Validation of file 'https://raw.githubusercontent.com/nf-core/test-datasets/bacass/bacass_short_reseq.tsv' passed!
+Feb-24 15:40:59.413 [main] WARN  n.v.parameters.ParameterValidator - The following invalid input values have been detected:
+
+* --long_reads_filtering: porechop
+* --custom_config_base: https://raw.githubusercontent.com/nf-core/configs/master
+* --custom_config_version: master
+* --filtlong_minlen: 10
+* --max_multiqc_email_size: 25.MB
+* --baktadb_download_args: --type light
+* --skip_kmerfinder: true
+* --config_profile_description: Minimal test dataset to check pipeline function
+* --validate_params: true
+* --annotation_tool: prokka
+* --assembler: unicycler
+* --paramsFile: /home/vy/coding/web_dev/genome_pipeline_platfrom/runs/24/params.json
+* --dfast_config: /home/vy/.nextflow/assets/nf-core/bacass/assets/test_config_dfast.py
+* --polish_method: medaka
+* --skip_pycoqc: true
+* --publish_dir_mode: copy
+* --pipelines_testdata_base_path: https://raw.githubusercontent.com/nf-core/test-datasets/
+* --input: https://raw.githubusercontent.com/nf-core/test-datasets/bacass/bacass_short_reseq.tsv
+* --config_profile_name: Test profile
+* --canu_mode: -nanopore
+* --trace_report_suffix: 2026-02-24_15-40-55
+* --skip_kraken2: true
+* --assembly_type: short
+* --busco_lineage: bacteria_odb10
+* --busco_mode: genome
+* --prokka_args:  --fast
+
+
+Feb-24 15:40:59.416 [main] ERROR n.v.parameters.ParameterValidator - Validation of pipeline parameters failed!
+Feb-24 15:40:59.423 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_3180e8c31ce54d03: /home/vy/.nextflow/assets/nf-core/bacass/workflows/bacass.nf
+  Script_3a70a6151321647b: /home/vy/.nextflow/assets/nf-core/bacass/subworkflows/nf-core/fastq_trim_fastp_fastqc/main.nf
+  Script_b666ee5b1a47ec88: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/minimap2/align/main.nf
+  Script_759dc90d68a2bc31: /home/vy/.nextflow/assets/nf-core/bacass/modules/local/kmerfinder/summary/main.nf
+  Script_215a636da7ab24a2: /home/vy/.nextflow/assets/nf-core/bacass/subworkflows/nf-core/utils_nfschema_plugin/main.nf
+  Script_35b31ac9af36aa49: /home/vy/.nextflow/assets/nf-core/bacass/main.nf
+  Script_9e61b79b569950a4: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/fastqc/main.nf
+  Script_d2480ba01e1d3d38: /home/vy/.nextflow/assets/nf-core/bacass/modules/local/kmerfinder/download_reference/main.nf
+  Script_5c4e8d4051efa81e: /home/vy/.nextflow/assets/nf-core/bacass/subworkflows/nf-core/utils_nfcore_pipeline/main.nf
+  Script_0bbaa8ea833b1abe: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/porechop/porechop/main.nf
+  Script_edff95f9ac8bee2c: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/filtlong/main.nf
+  Script_a985a58e759b7693: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/dragonflye/main.nf
+  Script_9892308df47cf9ae: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/samtools/sort/main.nf
+  Script_a40e3a23fa9445a8: /home/vy/.nextflow/assets/nf-core/bacass/modules/local/pycoqc/main.nf
+  Script_bc4a2d120a8a17bc: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/kraken2/kraken2/main.nf
+  Script_420fe2ef2d15d1d3: /home/vy/.nextflow/assets/nf-core/bacass/subworkflows/local/utils_nfcore_bacass_pipeline/main.nf
+  Script_e644fb6da94d4bab: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/untar/main.nf
+  Script_07dc9629fb0b74a6: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/samtools/index/main.nf
+  Script_bfa88c61c1eda657: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/unicycler/main.nf
+  Script_a75fc436c3304d43: /home/vy/.nextflow/assets/nf-core/bacass/modules/local/kmerfinder/kmerfinder/main.nf
+  Script_f3aedb5fc77165b9: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/racon/main.nf
+  Script_d0681043cdd3b4fd: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/prokka/main.nf
+  Script_13768c8fee03b0e0: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/gunzip/main.nf
+  Script_ae2806eb3177461f: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/miniasm/main.nf
+  Script_4f612cfd8c52e8cd: /home/vy/.nextflow/assets/nf-core/bacass/subworkflows/nf-core/utils_nextflow_pipeline/main.nf
+  Script_5f108d62a5477f8f: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/bakta/baktadbdownload/main.nf
+  Script_0c46f3221ef14a2f: /home/vy/.nextflow/assets/nf-core/bacass/modules/local/dfast/main.nf
+  Script_8a4c3a02fabbc634: /home/vy/.nextflow/assets/nf-core/bacass/subworkflows/local/bakta_dbdownload_run/main.nf
+  Script_b355087dc9d365d0: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/fastp/main.nf
+  Script_93d53436399fc000: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/toulligqc/main.nf
+  Script_509f10dbf866989b: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/busco/busco/main.nf
+  Script_3f1093487222a804: /home/vy/.nextflow/assets/nf-core/bacass/modules/local/custom/multiqc/main.nf
+  Script_8b6f2bf5665f668d: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/bakta/bakta/main.nf
+  Script_c3797b75a7e32c5c: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/quast/main.nf
+  Script_4871151a48ff6124: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/nanoplot/main.nf
+  Script_849b6f05ec067f5b: /home/vy/.nextflow/assets/nf-core/bacass/subworkflows/local/qc_nanoplot_toulliqc/main.nf
+  Script_5ef7fa158c817bca: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/canu/main.nf
+  Script_f3d968f8997e6cb0: /home/vy/.nextflow/assets/nf-core/bacass/modules/local/kraken2/db_preparation/main.nf
+  Script_fdffeb56d0715469: /home/vy/.nextflow/assets/nf-core/bacass/subworkflows/local/kmerfinder_summary_download/main.nf
+  Script_4f1d4a2f57327fbd: /home/vy/.nextflow/assets/nf-core/bacass/modules/local/nanopolish/main.nf
+  Script_d0ed91731c97b86d: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/liftoff/main.nf
+  Script_f0c9be7d13f120a6: /home/vy/.nextflow/assets/nf-core/bacass/modules/nf-core/cat/fastq/main.nf
+  Script_3365bfaa4af8646c: /home/vy/.nextflow/assets/nf-core/bacass/modules/local/medaka/main.nf
+Feb-24 15:40:59.423 [main] DEBUG nextflow.Session - Session aborted -- Cause: [0;31mThe following invalid input values have been detected:
+
+* Missing required parameter(s): outdir
+[0m
+
+Feb-24 15:40:59.439 [main] DEBUG nextflow.cli.Launcher - Operation aborted
+nextflow.validation.exceptions.SchemaValidationException: [0;31mThe following invalid input values have been detected:
+
+* Missing required parameter(s): outdir
+[0m
+
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.validation.parameters.ParameterValidator.validateParametersMap(ParameterValidator.groovy:179)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.validation.ValidationExtension.validateParameters(ValidationExtension.groovy:106)
+	at nextflow.validation.ValidationExtension.validateParameters(ValidationExtension.groovy)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at nextflow.script.FunctionDef.invoke_a(FunctionDef.groovy:64)
+	at nextflow.script.ComponentDef.invoke_o(ComponentDef.groovy:40)
+	at nextflow.script.WorkflowBinding.invokeMethod(WorkflowBinding.groovy:105)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokePogoMethod(InvokerHelper.java:651)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethod(InvokerHelper.java:628)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeOnDelegationObjects(ClosureMetaClass.java:392)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:331)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at Script_215a636da7ab24a2$_runScript_closure1$_closure2.doCall(Script_215a636da7ab24a2:39)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+	at groovy.lang.Closure.call(Closure.java:433)
+	at groovy.lang.Closure.call(Closure.java:412)
+	at nextflow.script.WorkflowDef.run0(WorkflowDef.groovy:205)
+	at nextflow.script.WorkflowDef.run(WorkflowDef.groovy:189)
+	at nextflow.script.BindableDef.invoke_a(BindableDef.groovy:51)
+	at nextflow.script.ComponentDef.invoke_o(ComponentDef.groovy:40)
+	at nextflow.script.WorkflowBinding.invokeMethod(WorkflowBinding.groovy:105)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokePogoMethod(InvokerHelper.java:651)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethod(InvokerHelper.java:628)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeOnDelegationObjects(ClosureMetaClass.java:392)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:331)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at Script_420fe2ef2d15d1d3$_runScript_closure3$_closure5.doCall(Script_420fe2ef2d15d1d3:53)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+	at groovy.lang.Closure.call(Closure.java:433)
+	at groovy.lang.Closure.call(Closure.java:412)
+	at nextflow.script.WorkflowDef.run0(WorkflowDef.groovy:205)
+	at nextflow.script.WorkflowDef.run(WorkflowDef.groovy:189)
+	at nextflow.script.BindableDef.invoke_a(BindableDef.groovy:51)
+	at nextflow.script.ComponentDef.invoke_o(ComponentDef.groovy:40)
+	at nextflow.script.WorkflowBinding.invokeMethod(WorkflowBinding.groovy:105)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokePogoMethod(InvokerHelper.java:651)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethod(InvokerHelper.java:628)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeOnDelegationObjects(ClosureMetaClass.java:392)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:331)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at Script_35b31ac9af36aa49$_runScript_closure2$_closure4.doCall(Script_35b31ac9af36aa49:58)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:280)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+	at groovy.lang.Closure.call(Closure.java:433)
+	at groovy.lang.Closure.call(Closure.java:412)
+	at nextflow.script.WorkflowDef.run0(WorkflowDef.groovy:205)
+	at nextflow.script.WorkflowDef.run(WorkflowDef.groovy:189)
+	at nextflow.script.BindableDef.invoke_a(BindableDef.groovy:51)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.script.BaseScript.run0(BaseScript.groovy:182)
+	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
+	at nextflow.script.BaseScript.run(BaseScript.groovy:193)
+	at nextflow.script.parser.v1.ScriptLoaderV1.runScript(ScriptLoaderV1.groovy:246)
+	at nextflow.script.parser.v1.ScriptLoaderV1.runScript(ScriptLoaderV1.groovy)
+	at nextflow.script.ScriptRunner.run(ScriptRunner.groovy:246)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:139)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:379)
+	at nextflow.cli.Launcher.run(Launcher.groovy:513)
+	at nextflow.cli.Launcher.main(Launcher.groovy:673)

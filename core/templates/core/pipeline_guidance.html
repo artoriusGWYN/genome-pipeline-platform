@@ -1,0 +1,16 @@
+{% extends 'core/layout.html' %}
+    {% block body %}
+
+        <h1>Please answer the following form</h1>
+
+        <form method="post" action="{% url 'core:guidance' %}" >
+
+            {% csrf_token %}
+            {{guidance_data}}
+
+            <input type="submit" >
+        
+        
+        </form>
+
+    {% endblock %}

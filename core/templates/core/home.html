@@ -1,0 +1,18 @@
+{% extends  "core/layout.html" %}
+
+    {% block body %}
+
+        <div>
+            <h1>Welcome to genome platform pipeline</h1>
+            <p> this platform help biolgists, and bioinformaticiens to run, track, compare the results of a pipeline from their choosing</p>
+            <br>
+            <p>if you are already familier with the nf-cores pipelines, you can browse the pipeline catalogue and choose your desired pipeline, if not, that's a no worry ! we will guid you to choose the pipeline that will suit or objectives, click on guidence and fill the forum</p>
+
+
+        </div>
+        <div>
+            <a href="{% url 'core:guidance' %}">Guidance to choose pipeline</a>
+            <a href="{% url 'pipeline:catalogue' %}">Pipeline catalogue</a>
+        </div>
+
+    {% endblock %}

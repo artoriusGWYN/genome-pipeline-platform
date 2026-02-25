@@ -1,0 +1,292 @@
+<!--
+  ~ Copyright 2013-2024, Seqera Labs
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<html>
+<head>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+</head>
+<body>
+<pre class="mermaid" style="text-align: center;">
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#B6ECE2',
+      'primaryTextColor': '#160F26',
+      'primaryBorderColor': '#065647',
+      'lineColor': '#545555',
+      'clusterBkg': '#BABCBD22',
+      'clusterBorder': '#DDDEDE',
+      'fontFamily': 'arial'
+    }
+  }
+}%%
+flowchart TB
+    subgraph " "
+    v2["Channel.fromList"]
+    v50["adapter_fasta"]
+    v51["discard_trimmed_pass"]
+    v52["save_trimmed_fail"]
+    v53["save_merged"]
+    v116[" "]
+    v117[" "]
+    v127["mode"]
+    v128["lineage"]
+    v129["busco_lineages_path"]
+    v130["config_file"]
+    v131["clean_intermediates"]
+    v152["proteins"]
+    v153["prodigal_tf"]
+    v172["Channel.of"]
+    v175["Channel.fromPath"]
+    v178["Channel.fromPath"]
+    v182["ch_workflow_summary"]
+    end
+    subgraph " "
+    v13["ch_longreads"]
+    v15["ch_fast5"]
+    v33["fastqc_raw_html"]
+    v55["trim_reads_merged"]
+    v56["trim_reads_fail"]
+    v57["trim_log"]
+    v58["trim_html"]
+    v64["fastqc_trim_html"]
+    v80["nanoplot_png"]
+    v81["nanoplot_html"]
+    v93["toulligqc_plotly_js"]
+    v94["toulligqc_plots_html"]
+    v95["toulligqc_report_html"]
+    v96["toulligqc_report_data"]
+    v107[" "]
+    v108[" "]
+    v119[" "]
+    v120[" "]
+    v121[" "]
+    v122[" "]
+    v133[" "]
+    v134[" "]
+    v135[" "]
+    v136[" "]
+    v137[" "]
+    v138[" "]
+    v139[" "]
+    v140[" "]
+    v141[" "]
+    v142[" "]
+    v143[" "]
+    v144[" "]
+    v155[" "]
+    v156[" "]
+    v157[" "]
+    v158[" "]
+    v159[" "]
+    v160[" "]
+    v161[" "]
+    v162[" "]
+    v163[" "]
+    v164[" "]
+    v165[" "]
+    v215[" "]
+    v216[" "]
+    v217[" "]
+    v218[" "]
+    v220["multiqc_report"]
+    v223[" "]
+    end
+    subgraph "NFCORE_BACASS [NFCORE_BACASS]"
+    subgraph "NFCORE_BACASS:BACASS [BACASS]"
+    v17(["CAT_FASTQ_SHORT"])
+    subgraph "NFCORE_BACASS:BACASS:FASTQ_TRIM_FASTP_FASTQC [FASTQ_TRIM_FASTP_FASTQC]"
+    v32(["FASTQC_RAW"])
+    v54(["FASTP"])
+    v63(["FASTQC_TRIM"])
+    v34(( ))
+    v61(( ))
+    end
+    subgraph "NFCORE_BACASS:BACASS:QC_NANOPLOT_TOULLIGQC [QC_NANOPLOT_TOULLIGQC]"
+    v79(["NANOPLOT"])
+    v92(["TOULLIGQC"])
+    end
+    v106(["UNICYCLER"])
+    v118(["QUAST"])
+    v132(["BUSCO_BUSCO"])
+    v148(["GUNZIP"])
+    v154(["PROKKA"])
+    v214(["CUSTOM_MULTIQC"])
+    v10(( ))
+    v19(( ))
+    v104(( ))
+    v109(( ))
+    v166(( ))
+    v179(( ))
+    v180(( ))
+    v181(( ))
+    v183(( ))
+    v184(( ))
+    v186(( ))
+    v188(( ))
+    v190(( ))
+    v192(( ))
+    v194(( ))
+    v196(( ))
+    v198(( ))
+    v200(( ))
+    v202(( ))
+    v204(( ))
+    v206(( ))
+    v210(( ))
+    v212(( ))
+    v219(( ))
+    v221(( ))
+    end
+    end
+    subgraph "PIPELINE_INITIALISATION [PIPELINE_INITIALISATION]"
+    v3(( ))
+    end
+    subgraph "PIPELINE_COMPLETION [PIPELINE_COMPLETION]"
+    v222(( ))
+    end
+    v2 --> v3
+    v10 --> v13
+    v10 --> v15
+    v10 --> v17
+    v17 --> v10
+    v17 --> v19
+    v10 --> v32
+    v32 --> v33
+    v32 --> v34
+    v32 --> v186
+    v50 --> v54
+    v51 --> v54
+    v52 --> v54
+    v53 --> v54
+    v10 --> v54
+    v54 --> v58
+    v54 --> v57
+    v54 --> v56
+    v54 --> v55
+    v54 --> v34
+    v54 --> v61
+    v54 --> v190
+    v61 --> v63
+    v63 --> v64
+    v63 --> v34
+    v63 --> v188
+    v79 --> v81
+    v79 --> v80
+    v79 --> v19
+    v79 --> v192
+    v92 --> v96
+    v92 --> v95
+    v92 --> v94
+    v92 --> v93
+    v92 --> v19
+    v104 --> v106
+    v106 --> v108
+    v106 --> v107
+    v106 --> v19
+    v106 --> v109
+    v116 --> v118
+    v117 --> v118
+    v109 --> v118
+    v118 --> v122
+    v118 --> v121
+    v118 --> v120
+    v118 --> v119
+    v118 --> v19
+    v118 --> v204
+    v127 --> v132
+    v128 --> v132
+    v129 --> v132
+    v130 --> v132
+    v131 --> v132
+    v109 --> v132
+    v132 --> v144
+    v132 --> v143
+    v132 --> v142
+    v132 --> v141
+    v132 --> v140
+    v132 --> v139
+    v132 --> v138
+    v132 --> v137
+    v132 --> v136
+    v132 --> v135
+    v132 --> v134
+    v132 --> v133
+    v132 --> v19
+    v132 --> v206
+    v109 --> v148
+    v148 --> v19
+    v148 --> v109
+    v152 --> v154
+    v153 --> v154
+    v109 --> v154
+    v154 --> v165
+    v154 --> v164
+    v154 --> v163
+    v154 --> v162
+    v154 --> v161
+    v154 --> v160
+    v154 --> v159
+    v154 --> v158
+    v154 --> v157
+    v154 --> v156
+    v154 --> v155
+    v154 --> v19
+    v154 --> v166
+    v172 --> v19
+    v175 --> v179
+    v178 --> v184
+    v182 --> v183
+    v19 --> v214
+    v166 --> v214
+    v179 --> v214
+    v180 --> v214
+    v181 --> v214
+    v183 --> v214
+    v184 --> v214
+    v186 --> v214
+    v188 --> v214
+    v190 --> v214
+    v192 --> v214
+    v194 --> v214
+    v196 --> v214
+    v198 --> v214
+    v200 --> v214
+    v202 --> v214
+    v204 --> v214
+    v206 --> v214
+    v210 --> v214
+    v212 --> v214
+    v214 --> v218
+    v214 --> v217
+    v214 --> v216
+    v214 --> v215
+    v214 --> v219
+    v214 --> v221
+    v219 --> v220
+    v222 --> v223
+    v3 --> v10
+    v34 --> v19
+    v61 --> v104
+    v221 --> v222
+
+</pre>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, maxTextSize: Number.MAX_SAFE_INTEGER, maxEdges: Number.MAX_SAFE_INTEGER });
+</script>
+</body>
+</html>

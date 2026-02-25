@@ -1,0 +1,16 @@
+{% extends 'pipeline/layout.html' %}
+    {% block body %}
+        <h1>Available Pipelines</h1>
+
+        <ul>
+            {% for pipeline in pipelines %}
+                <li>
+                    <a href="{% url 'pipeline:details' pipeline.id %}"> {{pipeline.name}} </a>
+                    <p> {{pipeline.description}} </p>
+                </li>
+            {% endfor %}
+        </ul>
+
+
+
+    {% endblock %}

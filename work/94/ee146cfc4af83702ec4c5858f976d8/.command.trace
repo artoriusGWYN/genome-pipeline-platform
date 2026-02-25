@@ -1,0 +1,17 @@
+nextflow.trace/v2
+realtime=5202
+%cpu=2023
+cpu_model=Intel(R) Core(TM) Ultra 5 135U
+rchar=131025931
+wchar=4490453
+syscr=240274
+syscw=12810
+read_bytes=4096
+write_bytes=4874240
+%mem=35
+vmem=4181628
+rss=556220
+peak_vmem=4243156
+peak_rss=556220
+vol_ctxt=4
+inv_ctxt=4

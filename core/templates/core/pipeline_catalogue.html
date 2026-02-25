@@ -1,0 +1,13 @@
+{% extends 'core/layout.html' %}
+
+    {% block body %}
+
+    <h1>Pipeline catalogue</h1>
+    <button><a href="{% url 'pipeline:bacass' %}" >Bacass pipeline</a></button>
+    <br>
+    <a href="{% url 'pipeline:pangenome' %}">pangenome Pipeline</a>
+    <br>
+    <a href="{% url 'pipeline:mag' %}">mag piepline</a>
+
+
+    {% endblock %}
