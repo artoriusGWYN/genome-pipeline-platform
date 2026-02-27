@@ -1,10 +1,11 @@
-{% extends 'execution/layout.html' %}
-
+{% extends "execution/layout.html" %}
 {% block body %}
 <h1>Pipeline Run {{ run.id }}</h1>
 <p>Status: {{ run.status }}</p>
-<p>Work directory: {{ run.work_dir }}</p>
+<p>Sequencing type: {{ run.sequencing_type }}</p>
 <p>Created at: {{ run.created_at }}</p>
-<p>Started at: {{ run.started_at }}</p>
-<p>Finished at: {{ run.finished_at }}</p>
+{% if run.fastq_r1 %}<p>R1 file: {{ run.fastq_r1.url }}</p>{% endif %}
+{% if run.fastq_r2 %}<p>R2 file: {{ run.fastq_r2.url }}</p>{% endif %}
+{% if run.nanopore %}<p>Nanopore file: {{ run.nanopore.url }}</p>{% endif %}
+{% if run.samplesheet %}<p>Samplesheet: {{ run.samplesheet.url }}</p>{% endif %}
 {% endblock %}

@@ -1,21 +1,104 @@
-{% extends 'pipeline/layout.html' %}
+{% extends "base.html" %}
+{% block title %}{{ pipeline.name }}{% endblock %}
 
-{% block body %}
-<h1>{{ pipeline.name }}</h1>
-<p>{{ pipeline.description }}</p>
+{% block content %}
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'pipeline:catalogue' %}">Pipelines</a></li>
+        <li class="breadcrumb-item active">{{ pipeline.name }}</li>
+    </ol>
+</nav>
 
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Run pipeline</button>
-</form>
+<div class="row">
 
-{% if pipeline.slug == "bacass" %}
-    <p>This pipeline runs Bacass analysis.</p>
-{% elif pipeline.slug == "pangenome" %}
-    <p>This pipeline runs pangenome analysis.</p>
-{% elif pipeline.slug == "mag" %}
-    <p>This pipeline runs MAG analysis.</p>
-{% endif %}
+    <!-- Form column -->
+    <div class="col-lg-8">
+        <h2 class="fw-bold mb-1">{{ pipeline.name }}</h2>
+        <p class="text-muted mb-4">{{ pipeline.description }}</p>
 
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white py-3 fw-semibold border-bottom">
+                <i class="bi bi-play-circle me-2"></i>Launch a new run
+            </div>
+            <div class="card-body p-4">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    {% for field in form %}
+                    <div class="mb-3">
+                        <label for="{{ field.id_for_label }}" class="form-label fw-semibold">
+                            {{ field.label }}
+                        </label>
+
+                        {% if field.field.widget.input_type == "select" %}
+                            <select name="{{ field.html_name }}"
+                                    id="{{ field.id_for_label }}"
+                                    class="form-select {% if field.errors %}is-invalid{% endif %}">
+                                {% for val, display in field.field.choices %}
+                                <option value="{{ val }}" {% if field.value == val %}selected{% endif %}>
+                                    {{ display }}
+                                </option>
+                                {% endfor %}
+                            </select>
+
+                        {% elif field.field.widget.input_type == "checkbox" %}
+                            <div class="form-check">
+                                <input type="checkbox"
+                                       name="{{ field.html_name }}"
+                                       id="{{ field.id_for_label }}"
+                                       class="form-check-input {% if field.errors %}is-invalid{% endif %}"
+                                       {% if field.value %}checked{% endif %}>
+                                <label class="form-check-label" for="{{ field.id_for_label }}">
+                                    {{ field.label }}
+                                </label>
+                            </div>
+
+                        {% elif field.field.widget.input_type == "file" %}
+                            <input type="file"
+                                   name="{{ field.html_name }}"
+                                   id="{{ field.id_for_label }}"
+                                   class="form-control {% if field.errors %}is-invalid{% endif %}">
+
+                        {% else %}
+                            <input type="{{ field.field.widget.input_type }}"
+                                   name="{{ field.html_name }}"
+                                   id="{{ field.id_for_label }}"
+                                   value="{{ field.value|default:'' }}"
+                                   class="form-control {% if field.errors %}is-invalid{% endif %}">
+                        {% endif %}
+
+                        {% if field.errors %}
+                        <div class="invalid-feedback">{{ field.errors|join:", " }}</div>
+                        {% endif %}
+
+                        {% if field.help_text %}
+                        <div class="form-text text-muted">{{ field.help_text }}</div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+
+                    <button type="submit" class="btn btn-dark mt-2">
+                        <i class="bi bi-play-fill me-2"></i>Submit run
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Info sidebar -->
+    <div class="col-lg-4 mt-4 mt-lg-0">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white py-3 fw-semibold border-bottom">
+                <i class="bi bi-info-circle me-2"></i>About this pipeline
+            </div>
+            <div class="card-body">
+                <p class="text-muted small mb-3">{{ pipeline.description }}</p>
+                <a href="https://nf-co.re/bacass" target="_blank" class="btn btn-outline-secondary btn-sm">
+                    <i class="bi bi-box-arrow-up-right me-1"></i>nf-core docs
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
 {% endblock %}

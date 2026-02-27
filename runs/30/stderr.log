@@ -1,6 +1,0 @@
-[33mNextflow 25.10.4 is available - Please consider updating your version to it(B[m
-The following invalid input values have been detected:
-
-* Missing required parameter(s): input, outdir
-
- -- Check script '/home/vy/.nextflow/assets/nf-core/bacass/subworkflows/nf-core/utils_nfschema_plugin/main.nf' at line: 39 or see '.nextflow.log' file for more details

@@ -1,42 +1,50 @@
 def build_nextflow_params(run):
-    """
-    Convert user answers (stored in run.parameters)
-    into actual Nextflow parameters dictionary.
-    """
 
-    user_params = run.parameters or {}
-    nf_params = {}
+    params = {}
 
-    # -------------------------
-    # Sequencing Type
-    # -------------------------
-    if run.sequencing_type == "PE":
-        nf_params["assembly_type"] = "short"
-        nf_params["assembler"] = "spades"
+    # email
+    if run.email:
+        params["email"] = run.email
 
-    elif run.sequencing_type == "LR":
-        nf_params["assembly_type"] = "long"
-        nf_params["assembler"] = "canu"
+    # QC
+    if run.skip_fastqc:
+        params["skip_fastqc"] = True
+    if run.skip_fastp:
+        params["skip_fastp"] = True
+    if run.skip_nanoplot:
+        params["skip_nanoplot"] = True
+    if run.skip_toulligqc:
+        params["skip_toulligqc"] = True
+    if run.save_trimmed:
+        params["save_trimmed"] = True
 
-    elif run.sequencing_type == "HY":
-        nf_params["assembly_type"] = "hybrid"
-        nf_params["assembler"] = "unicycler"
+    # Assembly
+    params["assembler"] = run.assembler
+    params["assembly_type"] = run.assembly_type
 
-    # -------------------------
-    # Optional Parameters
-    # -------------------------
-    if not user_params.get("contamination", False):
-        nf_params["skip_kraken2"] = True
-        nf_params["skip_kmerfinder"] = True
+    
 
-    if not user_params.get("annotation", False):
-        nf_params["skip_annotation"] = True
-    else:
-        nf_params["annotation_tool"] = user_params.get("annotation_tool", "prokka")
+    params["skip_kraken2"] = True
+    params["skip_kmerfinder"] = True
 
-    if not user_params.get("busco", False):
-        nf_params["skip_busco"] = True
-    else:
-        nf_params["busco_lineage"] = "bacteria_odb10"
+    # BUSCO
+    params["busco_lineage"] = run.busco_lineage
+    if run.skip_busco:
+        params["skip_busco"] = True
 
-    return nf_params
+    # Annotation
+    params["annotation_tool"] = run.annotation_tool
+    if run.skip_annotation:
+        params["skip_annotation"] = True
+    
+    # Validate assembler vs assembly_type
+
+    if run.assembly_type == "short":
+        if run.assembler != "unicycler":
+            raise ValueError("Short read assembly must use Unicycler.")
+
+    if run.assembly_type == "long":
+        if run.assembler not in ["flye", "canu", "miniasm", "raven"]:
+            raise ValueError("Invalid assembler for long reads.")
+
+    return params

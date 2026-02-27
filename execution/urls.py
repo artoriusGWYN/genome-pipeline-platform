@@ -4,5 +4,5 @@ from . import views
 app_name = "execution"
 
 urlpatterns = [
-    path("<int:run_id>/", views.pipeline_detail, name="home")  # run detail page
+    path("run/<int:run_id>/", views.run_detail, name="run_detail"),
 ]

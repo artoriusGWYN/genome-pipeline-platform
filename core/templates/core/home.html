@@ -1,18 +1,60 @@
-{% extends  "core/layout.html" %}
+{% extends "base.html" %}
+{% block title %}Home  GenomePlatform{% endblock %}
 
-    {% block body %}
-
-        <div>
-            <h1>Welcome to genome platform pipeline</h1>
-            <p> this platform help biolgists, and bioinformaticiens to run, track, compare the results of a pipeline from their choosing</p>
-            <br>
-            <p>if you are already familier with the nf-cores pipelines, you can browse the pipeline catalogue and choose your desired pipeline, if not, that's a no worry ! we will guid you to choose the pipeline that will suit or objectives, click on guidence and fill the forum</p>
-
-
+{% block content %}
+<div class="row justify-content-center text-center mb-5">
+    <div class="col-lg-7">
+        <h1 class="display-5 fw-bold mb-3">Bacterial Genome Analysis</h1>
+        <p class="lead text-muted">
+            Run nf-core bioinformatics pipelines and track your results — all from one place.
+        </p>
+        <div class="d-flex gap-3 justify-content-center mt-4">
+            <a href="{% url 'pipeline:catalogue' %}" class="btn btn-dark btn-lg">
+                <i class="bi bi-collection me-2"></i>Browse Pipelines
+            </a>
+            <a href="{% url 'core:guidance' %}" class="btn btn-outline-secondary btn-lg">
+                <i class="bi bi-compass me-2"></i>Not sure? Get guidance
+            </a>
         </div>
-        <div>
-            <a href="{% url 'core:guidance' %}">Guidance to choose pipeline</a>
-            <a href="{% url 'pipeline:catalogue' %}">Pipeline catalogue</a>
-        </div>
+    </div>
+</div>
 
-    {% endblock %}
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center p-4">
+                <i class="bi bi-gear-wide-connected display-5 text-primary mb-3 d-block"></i>
+                <h5 class="card-title fw-semibold">Run Pipelines</h5>
+                <p class="card-text text-muted">
+                    Submit nf-core/bacass jobs with your FASTQ files.
+                    Short reads, long reads, or hybrid assemblies.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center p-4">
+                <i class="bi bi-clock-history display-5 text-success mb-3 d-block"></i>
+                <h5 class="card-title fw-semibold">Track Runs</h5>
+                <p class="card-text text-muted">
+                    Monitor run status and inspect logs, parameters,
+                    and assembly outputs.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center p-4">
+                <i class="bi bi-compass display-5 text-warning mb-3 d-block"></i>
+                <h5 class="card-title fw-semibold">Get Guidance</h5>
+                <p class="card-text text-muted">
+                    Not sure which pipeline to use? Answer a few questions
+                    and we'll point you in the right direction.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

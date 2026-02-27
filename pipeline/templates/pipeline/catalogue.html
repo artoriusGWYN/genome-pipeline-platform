@@ -1,16 +1,38 @@
-{% extends 'pipeline/layout.html' %}
-    {% block body %}
-        <h1>Available Pipelines</h1>
+{% extends "base.html" %}
+{% block title %}Pipelines{% endblock %}
 
-        <ul>
-            {% for pipeline in pipelines %}
-                <li>
-                    <a href="{% url 'pipeline:details' pipeline.id %}"> {{pipeline.name}} </a>
-                    <p> {{pipeline.description}} </p>
-                </li>
-            {% endfor %}
-        </ul>
+{% block content %}
+<h2 class="fw-bold mb-1">Available Pipelines</h2>
+<p class="text-muted mb-4">Choose a pipeline to launch a new run.</p>
 
+{% if pipelines %}
+<div class="row g-4">
+    {% for pipeline in pipelines %}
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+                <h5 class="card-title fw-bold">
+                    <i class="bi bi-diagram-3 me-2 text-primary"></i>{{ pipeline.name }}
+                </h5>
+                <p class="card-text text-muted">{{ pipeline.description }}</p>
+            </div>
+            <div class="card-footer bg-white border-0 pb-4 px-4">
+                <a href="{% url 'pipeline:pipeline_detail' pipeline.id %}" class="btn btn-dark btn-sm">
+                    Launch <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
+{% else %}
+<div class="card border-0 shadow-sm">
+    <div class="card-body text-center py-5 text-muted">
+        <i class="bi bi-inbox display-4 d-block mb-3"></i>
+        <p class="mb-0">No pipelines added yet. Add one via the <a href="/admin">admin panel</a>.</p>
+    </div>
+</div>
+{% endif %}
 
-    {% endblock %}
+{% endblock %}

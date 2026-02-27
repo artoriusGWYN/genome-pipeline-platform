@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+
+# Django
+db.sqlite3
+media/
+
+# Pipeline run outputs
+runs/
+work/
+fastq/
+*.fastq.gz
+*.fq.gz
+local.config
+
+# Nextflow logs
+.nextflow/
+.nextflow.log*
+
+# Screenshots
+*.png
+
+# Test files
+test_R1*
+test_R2*
