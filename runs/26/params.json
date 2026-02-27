@@ -1,7 +1,0 @@
-{
-    "assembly_type": "short",
-    "assembler": "spades",
-    "skip_annotation": true,
-    "busco_lineage": "bacteria_odb10",
-    "outdir": "/home/vy/coding/web_dev/genome_pipeline_platfrom/runs/26"
-}

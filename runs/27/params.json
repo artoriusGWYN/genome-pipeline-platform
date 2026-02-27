@@ -1,8 +1,0 @@
-{
-    "assembly_type": "short",
-    "assembler": "spades",
-    "skip_annotation": true,
-    "busco_lineage": "bacteria_odb10",
-    "input": "/home/vy/coding/web_dev/genome_pipeline_platfrom/inputs/Screenshot_from_2026-02-20_00-46-24_4uIiwyD.png",
-    "outdir": "/home/vy/coding/web_dev/genome_pipeline_platfrom/runs/27"
-}

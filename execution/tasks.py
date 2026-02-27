@@ -22,18 +22,14 @@ def run_pipeline(run_id):
         run.started_at = timezone.now()
         run.save()
 
-        # ------------------------------------------------
-        # 1️⃣ CREATE OUTPUT DIRECTORY
-        # ------------------------------------------------
+        # creating output directory
         outdir = os.path.abspath(os.path.join("runs", str(run.id)))
         os.makedirs(outdir, exist_ok=True)
 
         run.work_dir = outdir
         run.save()
 
-        # ------------------------------------------------
-        # 2️⃣ HANDLE INPUT (samplesheet or auto-generate)
-        # ------------------------------------------------
+        # generation of a tsv file that complies with the bacass standards in case the user upaloads fastq files 
         if run.samplesheet:
             samplesheet_path = os.path.abspath(run.samplesheet.path)
 
@@ -68,9 +64,7 @@ def run_pipeline(run_id):
                     "NA"
                 ])
 
-        # ------------------------------------------------
-        # 3️⃣ BUILD NEXTFLOW PARAMETERS
-        # ------------------------------------------------
+        # generating nextflow parameters 
         nf_params = build_nextflow_params(run)
 
         nf_params["input"] = samplesheet_path
@@ -81,9 +75,7 @@ def run_pipeline(run_id):
         with open(params_file, "w") as f:
             json.dump(nf_params, f, indent=4)
 
-        # ------------------------------------------------
-        # 4️⃣ BUILD NEXTFLOW COMMAND
-        # ------------------------------------------------
+        #  generating the nextflow command 
         nf_command = [
             "nextflow",
             "run",
@@ -93,23 +85,17 @@ def run_pipeline(run_id):
             "-params-file", params_file
         ]
 
-        # Create readable command string
+        # displaying and creating the command generated (for debugging and testing the creating of the nextflow command generation)
         command_string = shlex.join(nf_command)
 
-        # Log it
         logger.info("Running Nextflow command: %s", command_string)
 
-        # Save command to file so you can inspect later
         with open(os.path.join(outdir, "command.sh"), "w") as f:
             f.write(command_string + "\n")
 
-        # OPTIONAL: store command in DB if you add a field
-        # run.command = command_string
-        # run.save()
+    
 
-        # ------------------------------------------------
-        # 5️⃣ EXECUTE NEXTFLOW
-        # ------------------------------------------------
+        # nextflow command execution using subprocess 
         result = subprocess.run(
             nf_command,
             stdout=subprocess.PIPE,
@@ -117,7 +103,7 @@ def run_pipeline(run_id):
             text=True
         )
 
-        # Save logs
+        # saving informations 
         with open(os.path.join(outdir, "stdout.log"), "w") as f:
             f.write(result.stdout)
 

@@ -10,8 +10,7 @@ def run_pipeline(run_id):
     run.status = "running"
     run.save()
 
-    # simulate actual work
-    time.sleep(5)  # replace with real execution code
+    time.sleep(5)  
 
     run.status = "completed"
     run.save()
