@@ -31,19 +31,19 @@ Make sure Redis server is running before starting Celery.
 
 ## How to Run the Platform
 
-### 1️⃣ Start Redis
+### 1 Start Redis
 
 In a terminal:
 
 redis-server
 
-### 2️⃣ Start Celery Worker
+### 2 Start Celery Worker
 
 Open a first terminal and run:
 
 celery -A genome worker --loglevel=info
 
-### 3️⃣ Start the Django Server
+### 3 Start the Django Server
 
 Open a second terminal and run:
 
@@ -52,3 +52,14 @@ python manage.py runserver
 The platform will be accessible at:
 
 http://127.0.0.1:8000/
+
+### 4 change the url to 
+
+http://127.0.0.1:8000/core 
+
+
+### 5 to access the comparaison feature, change the url to 
+
+http://127.0.0.1:8000/execution/comparison/
+
+NB: you would need to make at least two runs before accessing the comparaison feature 
