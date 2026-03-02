@@ -17,6 +17,9 @@ def run_pipeline(run_id):
 
     run = PipelineRun.objects.get(id=run_id)
 
+    # outdir is defined here so the except block can always access it
+    outdir = None
+
     try:
         run.status = "RUNNING"
         run.started_at = timezone.now()
@@ -29,7 +32,8 @@ def run_pipeline(run_id):
         run.work_dir = outdir
         run.save()
 
-        # generation of a tsv file that complies with the bacass standards in case the user upaloads fastq files 
+        # generation of a tsv file that complies with the bacass standards
+        # in case the user uploads fastq files directly instead of a samplesheet
         if run.samplesheet:
             samplesheet_path = os.path.abspath(run.samplesheet.path)
 
@@ -64,7 +68,7 @@ def run_pipeline(run_id):
                     "NA"
                 ])
 
-        # generating nextflow parameters 
+        # generating nextflow parameters
         nf_params = build_nextflow_params(run)
 
         nf_params["input"] = samplesheet_path
@@ -75,27 +79,30 @@ def run_pipeline(run_id):
         with open(params_file, "w") as f:
             json.dump(nf_params, f, indent=4)
 
-        #  generating the nextflow command 
+        # path to the nextflow.config file that limits resource usage
+        #if you are running this platform on a local computer, we do recommand not changing this parameter
+        #if you are running the platforom on an HPC or a cloud server, then feel free to comment the following line, along with the 94th line "-c", config_path, 
+        config_path = os.path.abspath("nextflow.config")
+
+        # generating the nextflow command
         nf_command = [
             "nextflow",
             "run",
             "nf-core/bacass",
             "-r", "2.5.0",
             "-profile", "docker",
+            "-c", config_path,        
             "-params-file", params_file
         ]
 
-        # displaying and creating the command generated (for debugging and testing the creating of the nextflow command generation)
+        # here we are saving the command for debugging and testing purposes 
         command_string = shlex.join(nf_command)
-
         logger.info("Running Nextflow command: %s", command_string)
 
         with open(os.path.join(outdir, "command.sh"), "w") as f:
             f.write(command_string + "\n")
 
-    
-
-        # nextflow command execution using subprocess 
+        # execute the nextflow command
         result = subprocess.run(
             nf_command,
             stdout=subprocess.PIPE,
@@ -103,7 +110,7 @@ def run_pipeline(run_id):
             text=True
         )
 
-        # saving informations 
+        # saving the important logs 
         with open(os.path.join(outdir, "stdout.log"), "w") as f:
             f.write(result.stdout)
 
@@ -114,10 +121,12 @@ def run_pipeline(run_id):
 
     except Exception as e:
         run.status = "FAILED"
+        logger.error("Pipeline run %s failed with error: %s", run_id, str(e))
 
-        error_log_path = os.path.join(outdir, "system_error.log")
-        with open(error_log_path, "w") as f:
-            f.write(str(e))
+        if outdir is not None:
+            error_log_path = os.path.join(outdir, "system_error.log")
+            with open(error_log_path, "w") as f:
+                f.write(str(e))
 
     run.finished_at = timezone.now()
     run.save()

@@ -8,4 +8,43 @@
 {% if run.fastq_r2 %}<p>R2 file: {{ run.fastq_r2.url }}</p>{% endif %}
 {% if run.nanopore %}<p>Nanopore file: {{ run.nanopore.url }}</p>{% endif %}
 {% if run.samplesheet %}<p>Samplesheet: {{ run.samplesheet.url }}</p>{% endif %}
+
+{% if run.status == "DONE" %}
+    <h2>Output Files</h2>
+
+    {% if output_files %}
+        <table border="1" cellpadding="6">
+            <thead>
+                <tr>
+                    <th>File</th>
+                    <th>Size (KB)</th>
+                    <th>Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for file in output_files %}
+                <tr>
+                    <td>{{ file.name }}</td>
+                    <td>{{ file.size_kb }}</td>
+                    <td><a href="{% url 'execution:download_file' run.id file.name %}">Download</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+        <p>No output files found.</p>
+    {% endif %}
+
+    <br>
+    <a href="{% url 'execution:comparison' %}">Compare this run with another run</a>   <!-- added line -->
+
+{% elif run.status == "RUNNING" or run.status == "PENDING" %}
+    <p>Pipeline is still running. Refresh the page to check for updates.</p>
+
+{% elif run.status == "FAILED" %}
+    <p>The pipeline failed.</p>
+
+{% endif %}
+
 {% endblock %}

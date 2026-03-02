@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+#urls.py that belongs to the pipeline app
+
 app_name = "pipeline"
 
 urlpatterns = [

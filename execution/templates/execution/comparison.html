@@ -1,0 +1,159 @@
+{% extends "execution/layout.html" %}
+{% load dict_extras %}
+{% block body %}
+
+<h1>Compare Runs</h1>
+
+<!-- list of all completed runs with links -->
+<h2>All Completed Runs</h2>
+{% if all_runs %}
+    <ul>
+        {% for run in all_runs %}
+            <li>
+                <a href="{% url 'execution:run_detail' run.id %}">
+                    Run #{{ run.id }} — {{ run.pipeline.name }} — {{ run.created_at|date:"Y-m-d H:i" }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No completed runs yet.</p>
+{% endif %}
+
+<hr>
+
+<!-- checkbox form to select runs -->
+<h2>Select Runs to Compare</h2>
+<p>Select exactly 2 runs to get a gene-level comparison.</p>
+
+<form method="GET" action="{% url 'execution:comparison' %}">
+    {% for run in all_runs %}
+        <div>
+            <input
+                type="checkbox"
+                name="runs"
+                value="{{ run.id }}"
+                id="run_{{ run.id }}"
+                {% if run.id|stringformat:"s" in selected_ids %}checked{% endif %}
+            >
+            <label for="run_{{ run.id }}">
+                Run #{{ run.id }} — {{ run.pipeline.name }} — {{ run.created_at|date:"Y-m-d H:i" }}
+            </label>
+        </div>
+    {% endfor %}
+    <br>
+    <button type="submit">Compare Selected Runs</button>
+</form>
+
+<hr>
+
+{% if comparison_data %}
+
+    <!-- -------------------------------------------------- -->
+    <!-- QUAST assembly quality table                       -->
+    <!-- -------------------------------------------------- -->
+
+    <h2>Assembly Quality (QUAST)</h2>
+
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>Metric</th>
+                {% for item in comparison_data %}
+                    <th>Run #{{ item.run.id }}<br><small>{{ item.run.created_at|date:"Y-m-d" }}</small></th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for metric in quast_metrics %}
+            <tr>
+                <td>{{ metric }}</td>
+                {% for item in comparison_data %}
+                    <td>{{ item.quast|get_key:metric }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+
+    <!-- -------------------------------------------------- -->
+    <!-- Prokka gene comparison (only shown for 2 runs)     -->
+    <!-- -------------------------------------------------- -->
+
+    {% if gene_comparison %}
+
+        <h2>Gene Annotation Comparison (Prokka)</h2>
+
+        <p>
+            <strong>{{ gene_comparison.shared_count }}</strong> genes shared between both runs &nbsp;|&nbsp;
+            <strong>{{ gene_comparison.only_in_a_count }}</strong> genes unique to Run #{{ gene_comparison.run_a.id }} &nbsp;|&nbsp;
+            <strong>{{ gene_comparison.only_in_b_count }}</strong> genes unique to Run #{{ gene_comparison.run_b.id }}
+        </p>
+
+        <!-- shared genes -->
+        <h3>Shared Genes ({{ gene_comparison.shared_count }})</h3>
+        {% if gene_comparison.shared %}
+            <p>{{ gene_comparison.shared|join:", " }}</p>
+        {% else %}
+            <p>No shared named genes found.</p>
+        {% endif %}
+
+        <br>
+
+        <!-- genes unique to run A -->
+        <h3>Genes only in Run #{{ gene_comparison.run_a.id }} ({{ gene_comparison.only_in_a_count }})</h3>
+        {% if gene_comparison.only_in_a %}
+            <table border="1" cellpadding="6">
+                <thead>
+                    <tr>
+                        <th>Gene</th>
+                        <th>Product</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in gene_comparison.only_in_a %}
+                    <tr>
+                        <td><em>{{ entry.gene }}</em></td>
+                        <td>{{ entry.product }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No unique named genes found for this run.</p>
+        {% endif %}
+
+        <br>
+
+        <!-- genes unique to run B -->
+        <h3>Genes only in Run #{{ gene_comparison.run_b.id }} ({{ gene_comparison.only_in_b_count }})</h3>
+        {% if gene_comparison.only_in_b %}
+            <table border="1" cellpadding="6">
+                <thead>
+                    <tr>
+                        <th>Gene</th>
+                        <th>Product</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in gene_comparison.only_in_b %}
+                    <tr>
+                        <td><em>{{ entry.gene }}</em></td>
+                        <td>{{ entry.product }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No unique named genes found for this run.</p>
+        {% endif %}
+
+    {% else %}
+        <p>Select exactly 2 runs to see the gene-level comparison.</p>
+    {% endif %}
+
+{% endif %}
+
+{% endblock %}

@@ -3,6 +3,8 @@ from .models import Pipeline
 from execution.forms import PipelineRunForm
 from execution.tasks import run_pipeline
 
+
+
 def catalogue(request):
     pipelines = Pipeline.objects.all()
     return render(request, "pipeline/catalogue.html", {

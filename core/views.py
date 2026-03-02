@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django import forms
 from django.http import HttpResponse
 
+#views that belongs to the core app
+
 # Create your views here.
 
 class guidanceFrom(forms.Form):
